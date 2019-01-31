@@ -112,7 +112,7 @@ namespace Pic10b{
         return the_data[index];
     }
 	template<typename T>
-    T vector::operator[]( size_t index ) const {
+    T vector<T>::operator[]( size_t index ) const {
         return the_data[index];
     }
 	template<typename T>
@@ -181,13 +181,13 @@ void print_vector( const Pic10b::vector<T>& v ){
 
 
 /** ************************* THE DRIVER ************************ **/
-int main(){
+int main1(){
 
     using Pic10b::vector;
     using std::cout;
 
     cout << "Create & display empty vector (v1)\n";
-    vector v1;
+    vector<int> v1;
     print_vector(v1);
     v1.dump_data();
 
@@ -198,7 +198,7 @@ int main(){
     print_vector(v1);
 
     cout << "\nCopy non-empty vector, pop back last entry & display (v2)\n";
-    vector v2(v1);
+    vector<int> v2(v1);
     v2.pop_back();
     print_vector(v2);
 
