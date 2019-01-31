@@ -178,7 +178,23 @@ void print_vector( const Pic10b::vector<T>& v ){
         std::cout << "Vector (contents): " << v << '\n' ;
 } 
 
+template<typename T>
+Pic10b::vector<T>  operator*(const T& c, const Pic10b::vector<T>& v) {
+	//static_assert(std::is_arithmetic<T>::value, "Numeric required.");
+	Pic10b::vector<T> v1;
+	for (size_t i = 0; i < v.size(); ++i)
+		v1.push_back(c * v[i]);
+	return v1;
+}
 
+template<typename T>
+Pic10b::vector<T> operator*(const Pic10b::vector<T>& v, const T& c) {
+	static_assert(std::is_arithmetic<T>::value, "Numeric required.");
+	Pic10b::vector<T> v1;
+	for (size_t i = 0; i < v.size(); ++i)
+		v1.push_back(v[i] * c);
+	return v1;
+}
 
 /** ************************* THE DRIVER ************************ **/
 int main1(){
