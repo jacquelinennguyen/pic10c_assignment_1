@@ -46,6 +46,7 @@ namespace Pic10b{
       : the_data(nullptr), the_size(0), the_capacity(INIT_CAP) {
 
         the_data = new T[the_capacity];
+		std::cout << "xxxxxxxxxx Default constructor called\n";
     }
 	template<typename T>
     vector<T>::vector( const vector& source )
@@ -58,6 +59,7 @@ namespace Pic10b{
         for ( int i = 0 ; i < the_size ; ++i ){
             the_data[i] = source.the_data[i];
         }
+		std::cout << "xxxxxxxxxx Copy constructor called\n";
     }
 	template<typename T>
     vector<T>& vector<T>::operator=( const vector& rhs ) {
@@ -74,6 +76,7 @@ namespace Pic10b{
             for ( int i = 0 ; i < the_size ; ++i )
                 the_data[i] = rhs.the_data[i];
         }
+		std::cout << "xxxxxxxxxx Assignment operator called\n";
         return *this;
     }
 
@@ -87,6 +90,7 @@ namespace Pic10b{
 	template<typename T>
     vector<T>::~vector(){
         delete[] the_data;
+		std::cout << "xxxxxxxxxx Destructor called\n";
     }
 
     /** *********************** OTHER MEMBERS *********************** **/
