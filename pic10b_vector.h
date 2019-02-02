@@ -224,31 +224,16 @@ template <> Pic10b::vector<std::string> operator*<std::string>(const Pic10b::vec
 }
 
 template<typename T>
-Pic10b::vector<T> operator*(const Pic10b::vector<T>& vec1, const Pic10b::vector<T>& vec2) {
+T operator*(const Pic10b::vector<T>& vec1, const Pic10b::vector<T>& vec2) {
 	static_assert(std::is_arithmetic<T>::value, "Numeric required.");
-	Pic10b::vector<T> v;
-	size_t sm_size;
-	const Pic10b::vector<T> *big_vec;
-
-	if (vec1.size() < vec2.size()) {
-		sm_size = vec1.size();
-		big_vec = &vec2;
-	}
-	else {
-		sm_size = vec2.size();
-		big_vec = &vec1;
-	}
-	size_t i = 0;
-	for (; i < sm_size; ++i)
-		v.push_back(vec1[i] * vec2[i]);
-	for (; i < big_vec->size(); ++i)
-		v.push_back((*big_vec)[i]);
-
-	return v;
+	T total=0;
+	for (size_t i = 0; i < vec1.size(); ++i)
+		total += vec1[i] * vec2[i];
+	return total;
 }
 
 // specialize for string
-template<>
+/*template<typename T>
 Pic10b::vector<std::string> operator*<std::string>(const Pic10b::vector<std::string>& vec1,
 	const Pic10b::vector<std::string>& vec2) {
 	Pic10b::vector<std::string> v;
@@ -270,7 +255,7 @@ Pic10b::vector<std::string> operator*<std::string>(const Pic10b::vector<std::str
 		v.push_back((*big_vec)[i]);
 
 	return v;
-}
+}*/
 
 template<typename T>
 Pic10b::vector<T> operator+(const Pic10b::vector<T>& vec1, const Pic10b::vector<T>& vec2) {
