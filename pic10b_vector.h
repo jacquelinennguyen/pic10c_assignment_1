@@ -231,7 +231,7 @@ template <> Pic10b::vector<std::string> operator*<std::string>(const Pic10b::vec
 	Pic10b::vector<std::string> v1;
 	for (size_t i = 0; i < v.size(); ++i)
 		v1.push_back(v[i] + " " + c);
-	return v;
+	return v1;
 }
 
 template<typename T>
