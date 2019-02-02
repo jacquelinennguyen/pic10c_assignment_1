@@ -27,6 +27,7 @@ namespace Pic10b{
         T at( size_t index ) const;
         T& operator[]( size_t index );
         T operator[]( size_t index ) const; 
+		vector& operator+=(const vector&);
         void dump_data_to( std::ostream& out ) const;
         void dump_data() const;
         void push_back( T new_value );
@@ -75,6 +76,18 @@ namespace Pic10b{
         }
         return *this;
     }
+
+	template<typename T>
+	vector<T>& vector<T>::operator+=(const Pic10b::vector<T>& v1) {
+		the_size = v1.the_size;
+		the_capacity = v1.the_capacity;
+
+		// Deep copy internal array
+		for (int i = 0; i < the_size; ++i)
+			the_data[i] += v1.the_data[i];
+		return *this;
+	}
+
 	template<typename T>
     vector<T>::~vector(){
         delete[] the_data;
