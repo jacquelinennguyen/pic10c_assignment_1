@@ -79,10 +79,6 @@ namespace Pic10b{
 
 	template<typename T>
 	vector<T>& vector<T>::operator+=(const Pic10b::vector<T>& v1) {
-		the_size = v1.the_size;
-		the_capacity = v1.the_capacity;
-
-		// Deep copy internal array
 		for (int i = 0; i < the_size; ++i)
 			the_data[i] += v1.the_data[i];
 		return *this;
