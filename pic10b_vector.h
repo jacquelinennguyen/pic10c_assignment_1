@@ -1,4 +1,7 @@
-#include <iostream>   // std::ostream, std::cout
+#include <iostream>
+#include <cmath>
+#include <type_traits>
+// std::ostream, std::cout
 
 namespace Pic10b{
 	template<typename T>
@@ -178,8 +181,12 @@ namespace Pic10b{
 template<typename T>
 /** ************************ OTHER FUNCTIONS ************************ **/
 std::ostream& operator<<( std::ostream& out, const Pic10b::vector<T>& v ){
-    for ( size_t i = 0 ; i < v.size() ; ++i )
-        out << v[i] << ' ';
+	(std::is_same < T, std::string >::value) ? out << "[ " : out << "{";
+	for (size_t i = 0; i < v.size(); ++i) {
+		out << v[i];
+		if (i < v.size() - 1) out << ", ";
+	}
+	(std::is_same < T, std::string >::value) ? out << " ]" : out << "}";
     return out;
 }
 
@@ -202,16 +209,16 @@ Pic10b::vector<T>  operator*(const T& c, const Pic10b::vector<T>& v) {
 
 // specialized for string
 template <>
-Pic10b::vector<std::string> operator*<std::string>(const std::string& c, const Pic10b::vector<std::string>& v) {
-	Pic10b::vector<std::string> v1;
-	for (size_t i = 0; i < v.size(); ++i)
-		v1.push_back(c + v[i]);
+Pic10b::vector<std::string> operator*(const std::string&c, const Pic10b::vector<std::string>& vec1) {
+	Pic10b::vector<std::string> v;
+	for (size_t i = 0; i < vec1.size(); ++i)
+		v.push_back(c + " " + vec1[i]);
 	return v;
 }
 
 template<typename T>
 Pic10b::vector<T> operator*(const Pic10b::vector<T>& v, const T& c) {
-	static_assert(std::is_arithmetic<T>::value, "Numeric required.");
+	//static_assert(std::is_arithmetic<T>::value, "Numeric required.");
 	Pic10b::vector<T> v1;
 	for (size_t i = 0; i < v.size(); ++i)
 		v1.push_back(v[i] * c);
@@ -223,8 +230,8 @@ template <> Pic10b::vector<std::string> operator*<std::string>(const Pic10b::vec
 	const std::string& c) {
 	Pic10b::vector<std::string> v1;
 	for (size_t i = 0; i < v.size(); ++i)
-		v1.push_back(v[i] + c);
-	return v;
+		v1.push_back(v[i] + " " + c);
+	return v1;
 }
 
 template<typename T>
