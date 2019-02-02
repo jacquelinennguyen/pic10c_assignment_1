@@ -316,34 +316,22 @@ bool operator!=(const Pic10b::vector<T>& vec1, const Pic10b::vector<T>& vec2) {
 
 template<typename T>
 bool operator<(const Pic10b::vector<T>& vec1, const Pic10b::vector<T>& vec2) {
-	if (vec1.size() != vec2.size()) return false;
-	for (size_t i = 0; i < vec1.size(); ++i)
-		if (vec1[i] >= vec2[i]) return false;
-	return true;
+	return sqrt(vec1*vec1) < sqrt(vec2*vec2);
 }
 
 template<typename T>
 bool operator<=(const Pic10b::vector<T>& vec1, const Pic10b::vector<T>& vec2) {
-	if (vec1.size() != vec2.size()) return false;
-	for (size_t i = 0; i < vec1.size(); ++i)
-		if (vec1[i] > vec2[i]) return false;
-	return true;
+	return !(vec1 > vec2);
 }
 
 template<typename T>
 bool operator>(const Pic10b::vector<T>& vec1, const Pic10b::vector<T>& vec2) {
-	if (vec1.size() != vec2.size()) return false;
-	for (size_t i = 0; i < vec1.size(); ++i)
-		if (vec1[i] <= vec2[i]) return false;
-	return true;
+	return sqrt(vec1*vec1) > sqrt(vec2*vec2);
 }
 
 template<typename T>
 bool operator>=(const Pic10b::vector<T>& vec1, const Pic10b::vector<T>& vec2) {
-	if (vec1.size() != vec2.size()) return false;
-	for (size_t i = 0; i < vec1.size(); ++i)
-		if (vec1[i] < vec2[i]) return false;
-	return true;
+	return !(vec1 < vec2);
 }
 
 /** ************************* THE DRIVER ************************ **/
