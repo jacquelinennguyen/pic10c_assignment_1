@@ -1,0 +1,8 @@
+*.cpp
+pic10b_vector_old.h
+pic10b_vector_wah.h
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.h.gch
+x64
