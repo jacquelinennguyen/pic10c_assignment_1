@@ -1,3 +1,10 @@
+/**
+ * Jacqueline Nguyen
+ * PIC 10C
+ * Winter 2019
+ * */
+
+
 #include <iostream>
 #include <cmath>
 #include <type_traits>
@@ -47,7 +54,7 @@ namespace Pic10b{
 	template<typename T>
     vector<T>::vector() 
       : the_data(nullptr), the_size(0), the_capacity(INIT_CAP) {
-
+		
         the_data = new T[the_capacity];
 		std::cout << "xxxxxxxxxx Default constructor called\n";
     }
