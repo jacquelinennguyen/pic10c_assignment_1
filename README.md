@@ -4,6 +4,11 @@ This is the README file for PIC10C Assignment 1: Option A.
 ### Navigating the repository
 This repository is pretty bare bones so you shouldn't have much problem accessing the pic10b_vector.h file.
 
+### Files in this repository
++ `.gitignore` ignores binary files and VS related files.
++ `pic10b_vector.h`
++ `README.md` this README!
+
 ### Resources I used to help with the assignment/Git
 * https://stackoverflow.com/questions/19697444/c-vector-operator-overloading
 * https://mathisfun.com/algebra/vectors-dot-product.html
